@@ -1,0 +1,269 @@
+.admin-container {
+  padding: 2rem 0;
+  color: #2d3748; /* Forzar color de texto oscuro */
+  background-color: #fdf8e9; /* Forzar fondo claro */
+  min-height: 100vh;
+}
+
+.admin-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.admin-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #4a332a; /* Color de encabezado oscuro */
+}
+
+.admin-container h2, 
+.admin-container h3, 
+.admin-container p, 
+.admin-container label, 
+.admin-container .guide-intro {
+  color: #2d3748; /* Forzar color legible */
+}
+
+.admin-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tab-btn {
+  background: white;
+  border: 2px solid #bcaaa4;
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #5d4037;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  background: #fdf8e9;
+}
+
+.tab-btn.active {
+  background: #8d6e63;
+  color: white;
+  border-color: #8d6e63;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.admin-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Gestor de Simbología */
+.symbols-manager {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 900px) {
+  .symbols-manager {
+    grid-template-columns: 350px 1fr;
+  }
+}
+
+.form-card {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.form-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px dashed #bcaaa4;
+  padding-bottom: 0.5rem;
+}
+
+.symbol-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.symbol-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1a237e;
+}
+
+.symbol-form input[type="text"],
+.symbol-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #bcaaa4;
+  border-radius: 12px;
+  font-family: inherit;
+  background: #fdf8e9;
+  transition: border-color 0.3s;
+  color: #2d3748;
+}
+
+.symbol-form input[type="text"]:focus,
+.symbol-form textarea:focus {
+  outline: none;
+  border-color: #8d6e63;
+}
+
+.file-input {
+  width: 100%;
+  padding: 10px;
+  background: #fdf8e9;
+  border: 2px dashed #bcaaa4;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #2d3748;
+}
+
+.image-preview {
+  margin-top: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #bcaaa4;
+  max-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f0f0;
+}
+
+.image-preview img {
+  max-width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.symbols-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.symbol-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.symbol-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.symbol-item-header h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.symbol-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #8d6e63;
+  padding: 4px;
+  border-radius: 50%;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon:hover {
+  background: #fdf8e9;
+}
+
+.btn-icon.delete {
+  color: #d32f2f;
+}
+
+.symbol-thumbnail {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.symbol-meaning {
+  font-size: 0.95rem;
+  color: #555;
+  flex-grow: 1;
+}
+
+/* Guía Pedagógica */
+.guide-card {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.guide-intro {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #444;
+}
+
+.guide-moments {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.moment-block {
+  background: #fdf8e9;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 6px solid #1a237e;
+  color: #2d3748;
+}
+
+.moment-block h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+  color: #4e342e;
+}
+
+.moment-block p {
+  margin-bottom: 0.5rem;
+}
+
+.moment-block em {
+  color: #2e7d32;
+  font-size: 0.95rem;
+  display: block;
+  margin-top: 0.8rem;
+}
+
+/* Animaciones */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

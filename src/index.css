@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #fff9e8;
+  --color-primary: #914c00;
+  --color-primary-container: #ff8a00;
+  --color-secondary-container: #fdd400;
+  --color-tertiary-container: #6cbc1f;
+  --color-on-surface: #1e1c11;
+  --color-outline: #8a7362;
+  --color-surface-variant: #e8e2d0;
+
+  --radius-inga: 2rem;
+  
+  --font-lexend: "Lexend", sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-surface font-lexend text-on-surface;
+  }
+}
+
+@layer components {
+  .btn-3d {
+    @apply relative transition-all duration-75 active:translate-y-1;
+    box-shadow: 0 8px 0 0 var(--tw-shadow-color, rgba(0,0,0,0.2));
+  }
+  .btn-3d:active {
+    box-shadow: 0 2px 0 0 var(--tw-shadow-color, rgba(0,0,0,0.2));
+  }
+  .inga-bubble {
+    border-radius: 40px 40px 40px 10px;
+    border: 4px solid var(--color-primary-container);
+  }
+  .inga-seed {
+    width: 60px;
+    height: 80px;
+    border-radius: 40% 40% 50% 50%;
+    box-shadow: 0 6px 0 0 rgba(0,0,0,0.1);
+  }
+}
+
+/* Fallbacks for older pages that might still use organic classes */
+.card-organic {
+  background: white;
+  border-radius: var(--radius-inga);
+  padding: 24px;
+  box-shadow: 0 8px 30px rgba(74, 48, 24, 0.15);
+  border-top: 4px solid var(--color-primary);
+}
+
+.btn-organic {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.btn-organic.primary {
+  background-color: var(--color-primary-container);
+}

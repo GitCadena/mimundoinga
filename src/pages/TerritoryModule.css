@@ -1,0 +1,59 @@
+/* TerritoryModule.css */
+
+.polluted {
+  /* Simulation of low-fi, opaco background, but keeping it vibrant enough for kids */
+  filter: grayscale(0.2) sepia(0.2) saturate(0.8) brightness(0.8);
+}
+
+.cleaned {
+  /* Vibrant, alive background */
+  filter: grayscale(0) sepia(0) saturate(1.4) brightness(1.1) blur(0);
+}
+
+/* Base styles for particle animations if needed, though Tailwind ping handles basic disappearance well. Let's add a custom particle pop if wanted later. */
+@keyframes particlePop {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; filter: hue-rotate(90deg); }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+.animate-ping {
+  animation: particlePop 0.5s ease-out forwards;
+}
+
+/* Custom Child-friendly Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes pulseSlow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounceSlow 2s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 2.5s ease-in-out infinite;
+}

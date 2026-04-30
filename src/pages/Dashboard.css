@@ -1,0 +1,147 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dashboard-header {
+  margin-bottom: 1rem;
+}
+
+.dashboard-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 2rem;
+}
+
+.student-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.avatar-placeholder {
+  width: 80px;
+  height: 80px;
+  background-color: var(--color-tierra-media);
+  border-radius: var(--radius-organic-1);
+}
+
+.level-text {
+  color: var(--color-tierra-media);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.progress-section {
+  text-align: center;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 20px;
+  background-color: var(--color-crema);
+  border-radius: 10px;
+  margin: 15px 0;
+  overflow: hidden;
+  box-shadow: var(--shadow-inner);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--color-amarillo-vibrante);
+  border-radius: 10px;
+  transition: width 1s ease-in-out;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.badges-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.badge-item {
+  background-color: var(--color-tierra-clara);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  color: var(--color-tierra-oscura);
+}
+
+.missions-list {
+  list-style: none;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.missions-list li {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: var(--color-crema);
+  border-radius: var(--radius-soft);
+  display: flex;
+  justify-content: space-between;
+}
+
+.missions-list li.completed {
+  background-color: var(--color-verde-bosque);
+  color: white;
+}
+
+/* Tabla del Docente */
+.teacher-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.teacher-table th, .teacher-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-tierra-clara);
+}
+
+.teacher-table th {
+  color: var(--color-azul-profundo);
+  font-family: var(--font-secondary);
+}
+
+.badge-level {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.badge-level.curioso { background-color: var(--color-crema); }
+.badge-level.aprendiz-de-sabedor { background-color: var(--color-tierra-clara); }
+.badge-level.guardián-del-territorio { background-color: var(--color-amarillo-vibrante); }
+
+.module-tag {
+  background-color: var(--color-azul-agua);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  margin-right: 5px;
+}

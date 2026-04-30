@@ -1,0 +1,77 @@
+.navbar-organic {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--color-tierra-oscura);
+  color: var(--color-crema);
+  border-radius: 0 0 40% 40% / 0 0 20px 20px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 2rem;
+}
+
+.logo-text {
+  font-family: var(--font-secondary);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-amarillo-vibrante);
+  letter-spacing: 1px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-crema);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-organic-3);
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.nav-item.active {
+  background-color: var(--color-amarillo-vibrante);
+  color: var(--color-tierra-oscura);
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.role-indicator {
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-soft);
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  color: var(--color-crema);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.btn-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(45deg);
+}

@@ -1,0 +1,157 @@
+.medicine-module-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.medicine-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.medicine-workspace {
+  display: flex;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .medicine-workspace {
+    flex-direction: column;
+  }
+}
+
+.patient-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.patient-avatar {
+  width: 150px;
+  height: 150px;
+  background-color: var(--color-crema);
+  border-radius: var(--radius-organic-2);
+  padding: 20px;
+  box-shadow: var(--shadow-inner);
+}
+
+.patient-story {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--color-tierra-oscura);
+  line-height: 1.6;
+}
+
+.herbarium-section {
+  flex: 2;
+}
+
+.plants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.plant-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  background: white;
+  padding: 1.5rem;
+  gap: 10px;
+}
+
+.plant-icon-container {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.plant-card h4 {
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.plant-props {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.plant-card:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Animaciones de Sanación */
+.healing-animation {
+  animation: pulse-green 1.5s infinite;
+}
+
+@keyframes pulse-green {
+  0% { filter: drop-shadow(0 0 5px rgba(46, 139, 87, 0.5)); transform: scale(1); }
+  50% { filter: drop-shadow(0 0 20px rgba(46, 139, 87, 0.9)); transform: scale(1.05); }
+  100% { filter: drop-shadow(0 0 5px rgba(46, 139, 87, 0.5)); transform: scale(1); }
+}
+
+/* Feedback Overlay */
+.feedback-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s;
+}
+
+.feedback-content {
+  text-align: center;
+  max-width: 500px;
+}
+
+.feedback-content.success {
+  border-color: var(--color-verde-bosque);
+  background-color: #f0fdf4;
+}
+
+.feedback-content.error {
+  border-color: var(--color-rojo-tejido);
+  background-color: #fef2f2;
+}
+
+.feedback-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.feedback-content p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.finish-card {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 3rem;
+}
