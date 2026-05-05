@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import imgDash from '../img/fondo.png';
 import { BottomNav } from '../components/Shared/BottomNav';
+import { PedagogicalGuide } from '../components/Shared/PedagogicalGuide';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const Dashboard = () => {
     arte: false,
     territorio: false
   });
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   useEffect(() => {
     setProgress({
@@ -25,7 +27,7 @@ const Dashboard = () => {
   const percentage = Math.round((completedCount / 4) * 100);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#fdf8e9] via-[#fdf8e9] to-[#e8f5d3] font-['Plus_Jakarta_Sans'] pb-32">
+    <div className="min-h-screen bg-white/40 backdrop-blur-[2px] font-['Plus_Jakarta_Sans'] pb-32">
       {/* Top Bar */}
       <header className="flex justify-between items-center px-8 py-6 bg-white/50 backdrop-blur-sm rounded-b-[2rem] shadow-sm">
         <div className="flex items-center gap-3">
@@ -37,7 +39,10 @@ const Dashboard = () => {
             <span className="material-symbols-outlined text-2xl">arrow_back</span>
           </button>
           <span className="material-symbols-outlined text-[#ef6c00] text-3xl ml-2">home</span>
-          <h1 className="font-black text-2xl text-[#ef6c00] tracking-wide uppercase">El Mundo de Inga</h1>
+          <div className="flex flex-col">
+            <h1 className="font-black text-xl text-[#ef6c00] leading-none">MI MUNDO INGA</h1>
+            <p className="text-[10px] font-bold text-[#8d6e63] italic">Nuka Inga kaugsai</p>
+          </div>
         </div>
         <div className="flex items-center gap-4">
           <button 
@@ -47,14 +52,36 @@ const Dashboard = () => {
           >
             <span className="material-symbols-outlined text-black">military_tech</span> {percentage}% Progreso
           </button>
+          <button 
+            onClick={() => setIsInfoOpen(true)}
+            className="w-12 h-12 bg-[#ef6c00] rounded-full flex items-center justify-center text-white shadow-lg border-b-4 border-[#bf360c] hover:scale-105 transition-transform"
+            title="Guía de Aventura"
+          >
+            <span className="material-symbols-outlined text-3xl">info</span>
+          </button>
         </div>
       </header>
 
       <main className="max-w-5xl mx-auto px-6 mt-8 space-y-12 relative">
+        <PedagogicalGuide 
+          isOpen={isInfoOpen} 
+          onClose={() => setIsInfoOpen(false)}
+          title="Tu Viaje por el Mundo Inga"
+          description="¡Hola, pequeño guardián! En este mapa encontrarás diferentes aventuras para aprender sobre nuestra cultura."
+          items={[
+            { name: "Caminando por los Símbolos", meaning: "Aprende el significado de los dibujos sagrados de nuestros abuelos.", icon: "local_florist" },
+            { name: "Botica Mágica", meaning: "Descubre cómo las plantas nos ayudan a sanar dolores y heridas.", icon: "medical_services" },
+            { name: "Taller de Arte", meaning: "Usa los símbolos y colores para crear tus propias obras maestras.", icon: "palette" },
+            { name: "Cuida el Territorio", meaning: "Ayúdanos a limpiar nuestra Casa Grande para que la naturaleza sea feliz.", icon: "eco" }
+          ]}
+        />
         {/* Header Section */}
         <section className="flex justify-between items-center">
           <div className="space-y-4">
-            <h2 className="font-black text-5xl text-[#5d4037]">El Mundo de Inga</h2>
+            <div className="space-y-1">
+              <h2 className="font-black text-6xl text-[#5d4037] leading-tight">Mi mundo Inga</h2>
+              <p className="text-2xl font-bold text-[#ef6c00] italic">Nuka Inga kaugsai</p>
+            </div>
             <div className="relative inline-block mt-4">
               <div className="bg-white border-2 border-[#ff9800] rounded-[2rem] rounded-bl-sm px-6 py-4 shadow-lg">
                 <p className="font-bold text-xl text-gray-800">¡Hola amigo! ¿Listo para jugar?</p>

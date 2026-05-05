@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BottomNav } from '../components/Shared/BottomNav';
+import { PedagogicalGuide } from '../components/Shared/PedagogicalGuide';
+import avatarBoy from '../assets/avatar1.png';
 
 const ArtModule = () => {
   const navigate = useNavigate();
@@ -13,6 +15,7 @@ const ArtModule = () => {
   
   const [history, setHistory] = useState([]);
   const [historyStampCounts, setHistoryStampCounts] = useState([]);
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   const colors = ['#5d4037', '#e53935', '#ff9800', '#ffeb3b', '#4caf50', '#2196f3', '#9c27b0'];
   const symbols = [
@@ -164,7 +167,7 @@ const ArtModule = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#68b2a0] to-[#458e7f] font-['Plus_Jakarta_Sans'] pb-32 overflow-hidden flex flex-col">
+    <div className="min-h-screen bg-[#68b2a0]/20 backdrop-blur-[2px] font-['Plus_Jakarta_Sans'] pb-32 overflow-hidden flex flex-col">
       {/* Top Bar */}
       <header className="flex justify-between items-center px-6 py-4 bg-white/90 backdrop-blur-md shadow-md z-10">
         <div className="flex items-center gap-4">
@@ -174,12 +177,22 @@ const ArtModule = () => {
           >
             <span className="material-symbols-outlined text-3xl">home</span>
           </button>
-          <h1 className="font-black text-2xl text-[#ef6c00] tracking-wide uppercase">El Mundo de Inga</h1>
+          <div className="flex flex-col">
+            <h1 className="font-black text-xl text-[#ef6c00] leading-none">MI MUNDO INGA</h1>
+            <p className="text-[10px] font-bold text-[#8d6e63] italic">Nuka Inga kaugsai</p>
+          </div>
         </div>
         <div className="flex items-center gap-4">
           <div className="bg-[#fae4c5] px-6 py-2 rounded-full font-bold text-[#5d4037] flex items-center gap-2 shadow-sm border-2 border-[#e6c8a3]">
             <span className="material-symbols-outlined">palette</span> Taller de Arte
           </div>
+          <button 
+            onClick={() => setIsInfoOpen(true)}
+            className="w-12 h-12 bg-[#0288d1] rounded-full flex items-center justify-center text-white shadow-lg border-b-4 border-[#01579b] hover:scale-105 transition-transform"
+            title="Guía de Arte"
+          >
+            <span className="material-symbols-outlined text-3xl">info</span>
+          </button>
           <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-[#ef6c00] shadow-sm border-2 border-[#ef6c00]">
             <span className="material-symbols-outlined">person</span>
           </div>
@@ -188,6 +201,18 @@ const ArtModule = () => {
 
       {/* Main Workspace */}
       <main className="flex-1 flex mt-6 px-6 gap-6 relative z-0 max-w-7xl mx-auto w-full">
+        <PedagogicalGuide 
+          isOpen={isInfoOpen} 
+          onClose={() => setIsInfoOpen(false)}
+          title="El Arte de Tejer Historias"
+          description="En el arte Inga, cada trazo y cada símbolo tiene un poder especial. ¡Crea tu propia obra!"
+          items={[
+            { name: "El Espiral", meaning: "Representa el camino de la vida y el conocimiento que nunca termina.", icon: "sync" },
+            { name: "La Chagra", meaning: "Símbolo de comunidad y trabajo compartido para alimentar a la familia.", icon: "local_florist" },
+            { name: "El Sol", meaning: "Padre Inti, que nos da luz para ver y calor para crecer.", icon: "light_mode" },
+            { name: "Herramientas", meaning: "Usa el pincel para dibujar libremente y los sellos para colocar símbolos sagrados.", icon: "brush" }
+          ]}
+        />
         {/* Left Sidebar (Tools) */}
         <aside className="w-32 bg-[#81c0b3]/80 backdrop-blur-md rounded-[3rem] flex flex-col items-center py-8 gap-6 shadow-xl relative z-10 border-4 border-white/30 h-full overflow-y-auto">
           
@@ -295,8 +320,8 @@ const ArtModule = () => {
 
           {/* Elder Avatar & Instructions */}
           <div className="absolute bottom-6 left-6 flex items-end gap-4 pointer-events-none">
-            <div className="w-20 h-20 bg-gray-300 rounded-full border-4 border-[#ff9800] overflow-hidden shadow-lg pointer-events-auto">
-              <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&q=80&w=200" alt="Abuelo Inga" className="w-full h-full object-cover" />
+            <div className="w-20 h-20 bg-[#ffca28] rounded-full border-4 border-[#ff9800] overflow-hidden shadow-lg pointer-events-auto">
+              <img src={avatarBoy} alt="Compañero Inga" className="w-full h-full object-cover" />
             </div>
             <div className="bg-white px-4 py-3 rounded-[2rem] shadow-xl border-b-4 border-gray-100 mb-2 relative flex items-center gap-4 pointer-events-auto">
               <p className="font-bold text-[#5d4037] text-sm">¡Pinta y sella tus figuras Inga!</p>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './TerritoryModule.css';
+import { PedagogicalGuide } from '../components/Shared/PedagogicalGuide';
 
 // Import cartoon backgrounds
 import bgRio from '../img/rio_infantil.png';
@@ -19,7 +20,7 @@ const SCENARIOS = [
     ingaName: 'Iaku',
     bgImg: bgRio,
     items: [
-      { id: 'item-1', type: 'bottle', top: '60%', left: '30%', img: imgBasura1, className: 'animate-bounce-slow' },
+      { id: 'item-1', type: 'bottle', top: '45%', left: '30%', img: imgBasura1, className: 'animate-bounce-slow' },
       { id: 'item-2', type: 'can', top: '70%', left: '50%', img: imgBasura2, className: 'animate-float' },
       { id: 'item-3', type: 'bottle', top: '60%', left: '60%', img: imgBasura3, className: 'animate-bounce-slow' },
     ],
@@ -67,6 +68,7 @@ const TerritoryModule = () => {
   const [isCleaned, setIsCleaned] = useState(false);
   const [showParticle, setShowParticle] = useState(null);
   const [gameFinished, setGameFinished] = useState(false);
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   const speakText = (text) => {
     if ('speechSynthesis' in window) {
@@ -126,7 +128,7 @@ const TerritoryModule = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#1b5e20] font-['Plus_Jakarta_Sans'] flex flex-col relative overflow-hidden">
+    <div className="min-h-screen bg-[#1b5e20]/20 backdrop-blur-[2px] font-['Plus_Jakarta_Sans'] flex flex-col relative overflow-hidden">
       {/* Header */}
       <header className="absolute top-0 w-full z-20 flex justify-between items-center p-6 bg-gradient-to-b from-black/60 to-transparent">
         <button 
@@ -139,18 +141,39 @@ const TerritoryModule = () => {
         <h1 className="text-white text-2xl font-black tracking-wider uppercase drop-shadow-md">
           Cuida el Territorio
         </h1>
-        <div className="bg-white/20 backdrop-blur-md px-6 py-2 rounded-full border border-white/30 text-white font-bold flex gap-4">
-          <span>Nivel {currentLevelIndex + 1}/{SCENARIOS.length}</span>
-          <span className="text-red-300">Errores: {stats.errors}</span>
+        <div className="flex items-center gap-4">
+          <button 
+            onClick={() => setIsInfoOpen(true)}
+            className="w-12 h-12 bg-[#ff9800] rounded-full flex items-center justify-center text-white shadow-lg border-b-4 border-[#e65100] hover:scale-105 transition-transform"
+            title="Guía de Territorio"
+          >
+            <span className="material-symbols-outlined text-3xl">info</span>
+          </button>
+          <div className="bg-white/20 backdrop-blur-md px-6 py-2 rounded-full border border-white/30 text-white font-bold flex gap-4">
+            <span>Nivel {currentLevelIndex + 1}/{SCENARIOS.length}</span>
+            <span className="text-red-300">Errores: {stats.errors}</span>
+          </div>
         </div>
       </header>
 
       {/* Main Scenario */}
-      <main 
-        className={`flex-1 relative transition-all duration-1000 bg-cover bg-center ${isCleaned ? 'cleaned' : 'polluted'}`}
-        style={{ backgroundImage: `url(${currentLevel.bgImg})` }}
-        onClick={handleBackgroundClick}
-      >
+  <main 
+    className={`flex-1 relative transition-all duration-1000 bg-cover bg-center ${isCleaned ? 'cleaned' : 'polluted'}`}
+    style={{ backgroundImage: `url(${currentLevel.bgImg})` }}
+    onClick={handleBackgroundClick}
+  >
+    <PedagogicalGuide 
+      isOpen={isInfoOpen} 
+      onClose={() => setIsInfoOpen(false)}
+      title="Guardianes de la Casa Grande"
+      description="Para el pueblo Inga, el territorio es nuestra madre. Cuidar el agua y la tierra es cuidar la vida."
+      items={[
+        { name: "El Río (Iaku)", meaning: "El agua limpia es sagrada. No debemos arrojar basura que enferme a los peces.", icon: "water" },
+        { name: "La Chagra", meaning: "Es donde sembramos nuestro alimento. Debe estar limpia para que la tierra sea fértil.", icon: "agriculture" },
+        { name: "El Camino (Nambita)", meaning: "Por aquí caminamos hacia el saber. Mantenerlo limpio es señal de respeto.", icon: "nature_people" },
+        { name: "Tu Misión", meaning: "Haz clic en todos los elementos extraños (basura) para devolverle la salud al territorio.", icon: "auto_fix_high" }
+      ]}
+    />
         {/* Avatars */}
         <div className="absolute bottom-8 left-8 z-30 flex items-end gap-4 drop-shadow-2xl">
           <div className="w-36 h-36 bg-[#ffeb3b] rounded-full border-4 border-white shadow-xl overflow-hidden flex items-center justify-center relative animate-bounce-slow">
@@ -162,7 +185,10 @@ const TerritoryModule = () => {
             <p className="text-gray-700 font-medium mb-2">{currentLevel.feedback.es}</p>
             <p className="text-green-700 italic font-bold">"{currentLevel.feedback.inga}"</p>
             <button 
-              onClick={(e) => { e.stopPropagation(); speakText(currentLevel.feedback.es); }}
+              onClick={(e) => { 
+                e.stopPropagation(); 
+                speakText(`${currentLevel.feedback.es}. ${currentLevel.feedback.inga}`); 
+              }}
               className="absolute top-4 right-4 w-10 h-10 bg-[#ef6c00] text-white rounded-full flex items-center justify-center shadow-md hover:bg-[#e65100]"
             >
               <span className="material-symbols-outlined">volume_up</span>

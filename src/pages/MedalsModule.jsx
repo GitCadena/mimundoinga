@@ -44,7 +44,10 @@ const MedalsModule = () => {
       <header className="flex justify-between items-center px-8 py-6 bg-white/50 backdrop-blur-sm rounded-b-[2rem] shadow-sm">
         <div className="flex items-center gap-3">
           <span className="material-symbols-outlined text-[#ef6c00] text-3xl">home</span>
-          <h1 className="font-black text-2xl text-[#ef6c00] tracking-wide uppercase">El Mundo de Inga</h1>
+          <div className="flex flex-col">
+            <h1 className="font-black text-xl text-[#ef6c00] leading-none">MI MUNDO INGA</h1>
+            <p className="text-[10px] font-bold text-[#8d6e63] italic">Nuka Inga kaugsai</p>
+          </div>
         </div>
         <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#ef6c00] shadow-sm border-2 border-[#ef6c00]">
           <span className="material-symbols-outlined">person</span>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BottomNav } from '../components/Shared/BottomNav';
+import { PedagogicalGuide } from '../components/Shared/PedagogicalGuide';
 
 // Import medicine images
 import imgMenta from '../img/menta.png';
@@ -27,6 +28,7 @@ const MedicineModule = () => {
   const [success, setSuccess] = useState(false);
   const [errorText, setErrorText] = useState('');
   const [shuffledMedicines, setShuffledMedicines] = useState([]);
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   const baseMedicines = [
     { id: 'm1', name: 'Menta Curativa', image: imgMenta, color: 'bg-[#ffeb3b]', border: 'border-[#fbc02d]', text: 'text-[#f57f17]' },
@@ -94,7 +96,7 @@ const MedicineModule = () => {
   const isFullyComplete = currentScenario === scenarios.length - 1 && success;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#fdf8e9] via-[#fdf8e9] to-[#e8f5d3] font-['Plus_Jakarta_Sans'] pb-32">
+    <div className="min-h-screen bg-white/40 backdrop-blur-[2px] font-['Plus_Jakarta_Sans'] pb-32">
       {/* Top Bar */}
       <header className="flex justify-between items-center px-8 py-6 bg-white/50 backdrop-blur-sm rounded-b-[2rem] shadow-sm">
         <div className="flex items-center gap-3">
@@ -104,6 +106,13 @@ const MedicineModule = () => {
           <h1 className="font-black text-2xl text-[#ef6c00] tracking-wide uppercase">Botica Mágica</h1>
         </div>
         <div className="flex items-center gap-4">
+          <button 
+            onClick={() => setIsInfoOpen(true)}
+            className="w-12 h-12 bg-[#4caf50] rounded-full flex items-center justify-center text-white shadow-lg border-b-4 border-[#2e7d32] hover:scale-105 transition-transform"
+            title="Ver Guía de Plantas"
+          >
+            <span className="material-symbols-outlined text-3xl">info</span>
+          </button>
           <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#ef6c00] shadow-sm border-2 border-[#ef6c00]">
             <span className="material-symbols-outlined">person</span>
           </div>
@@ -111,6 +120,18 @@ const MedicineModule = () => {
       </header>
 
       <main className="max-w-6xl mx-auto px-6 mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <PedagogicalGuide 
+          isOpen={isInfoOpen} 
+          onClose={() => setIsInfoOpen(false)}
+          title="Botica Ancestral Inga"
+          description="Nuestras plantas son regalo de la Madre Tierra para sanar el cuerpo y el espíritu."
+          items={[
+            { name: "Menta", meaning: "Calma los dolores de barriga y ayuda a una buena digestión.", icon: "eco" },
+            { name: "Aloe (Sábila)", meaning: "Refresca la piel cuando el sol nos quema y ayuda a sanar heridas.", icon: "spa" },
+            { name: "Corteza Sagrada", meaning: "Se usa para limpiar y proteger las raspaduras de los niños exploradores.", icon: "sanitizer" },
+            { name: "Manzanilla", meaning: "Desinflama las picaduras y ayuda a descansar mejor.", icon: "psychology" }
+          ]}
+        />
         {/* Left Side: Avatar & Problem */}
         <div className="bg-white rounded-[3rem] p-6 shadow-2xl relative border-b-8 border-gray-100">
           <div className="w-full aspect-square bg-[#fff8e1] rounded-[2rem] overflow-hidden relative flex items-center justify-center p-4">

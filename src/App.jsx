@@ -12,13 +12,18 @@ import SymbolsModule from './pages/SymbolsModule';
 import MedalsModule from './pages/MedalsModule';
 import Welcome from './pages/Welcome';
 import TerritoryModule from './pages/TerritoryModule';
+import { BackgroundAudio } from './components/Shared/BackgroundAudio';
+import { PedagogicalGuide } from './components/Shared/PedagogicalGuide';
+import { useState } from 'react';
 
 function App() {
   return (
     <GameProvider>
       <Router>
-        {/* We keep the navbar but Dashboard has its own nav now, up to the user to remove the global Navbar if they want full immersion, but I'll keep it as is. Let's actually remove the global navbar since the user's hub provides its own navigation logic */}
-        <main className="app-container max-w-none p-0">
+        <main className="app-container max-w-none p-0 relative min-h-screen">
+          {/* Global UI Elements */}
+          <BackgroundAudio />
+          
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/hub" element={<Dashboard />} />

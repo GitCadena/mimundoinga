@@ -4,6 +4,7 @@ import { getSymbols } from '../data/symbols';
 import avatarBoy from '../assets/avatar1.png';
 import avatarGirl from '../assets/avatar2.png';
 import { BottomNav } from '../components/Shared/BottomNav';
+import { PedagogicalGuide } from '../components/Shared/PedagogicalGuide';
 
 const SymbolsModule = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const SymbolsModule = () => {
   const [meanings, setMeanings] = useState([]);
   const [matches, setMatches] = useState({});
   const [feedback, setFeedback] = useState({ message: '', type: '' });
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   const playSpeech = (text) => {
     if ('speechSynthesis' in window) {
@@ -98,7 +100,7 @@ const SymbolsModule = () => {
   const isComplete = symbols.length > 0 && Object.keys(matches).length === symbols.length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#81c784] to-[#388e3c] font-['Plus_Jakarta_Sans'] pb-32 relative overflow-hidden flex flex-col">
+    <div className="min-h-screen bg-[#388e3c]/20 backdrop-blur-[2px] font-['Plus_Jakarta_Sans'] pb-32 relative overflow-hidden flex flex-col">
       {/* Decorative Texture Background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#ffffff 2px, transparent 2px)', backgroundSize: '30px 30px' }}></div>
 
@@ -113,9 +115,27 @@ const SymbolsModule = () => {
           </button>
           <h1 className="font-black text-2xl text-white tracking-wide uppercase">Caminando por los Símbolos</h1>
         </div>
+        <button 
+          onClick={() => setIsInfoOpen(true)}
+          className="w-12 h-12 bg-[#ffeb3b] rounded-full flex items-center justify-center text-[#f57f17] shadow-lg border-b-4 border-[#fbc02d] hover:scale-105 transition-transform"
+          title="Ver Guía de Símbolos"
+        >
+          <span className="material-symbols-outlined text-3xl">info</span>
+        </button>
       </header>
 
       <main className="max-w-6xl mx-auto px-6 mt-8 flex-1 w-full relative z-10 flex flex-col items-center">
+        <PedagogicalGuide 
+          isOpen={isInfoOpen} 
+          onClose={() => setIsInfoOpen(false)}
+          title="Sabiduría de los Símbolos"
+          description="Los símbolos Inga cuentan historias de nuestra conexión con la naturaleza y el universo. ¡Aprende sus nombres!"
+          items={[
+            { name: "Símbolos de la Chagra", meaning: "Representan la fertilidad de la tierra y el alimento que nos da vida.", icon: "local_florist" },
+            { name: "Insignias de Poder", meaning: "Cada símbolo tiene un color y forma que representa un elemento del territorio.", icon: "military_tech" },
+            { name: "Escucha a los Mayores", meaning: "Haz clic en el altavoz de cada símbolo para escuchar su nombre en español.", icon: "volume_up" }
+          ]}
+        />
         
         {/* 
           CRITERIO DE ACTITUD: 

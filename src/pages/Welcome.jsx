@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import avatarBoy from '../assets/avatar1.png';
 import avatarGirl from '../assets/avatar2.png';
+import imgFondo from '../img/fondo.png';
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Welcome = () => {
 
   if (role === 'student') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#fdf8e9] to-[#e8f5d3] flex flex-col items-center justify-center p-6 font-['Plus_Jakarta_Sans']">
+      <div className="min-h-screen bg-white/20 backdrop-blur-sm flex flex-col items-center justify-center p-6 font-['Plus_Jakarta_Sans']">
         <h1 className="text-4xl font-black text-[#5d4037] mb-8 text-center">Elige tu compañero de viaje</h1>
         <div className="flex gap-8">
           <div 
@@ -42,13 +43,16 @@ const Welcome = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#fdf8e9] to-[#e8f5d3] flex flex-col items-center justify-center p-6 font-['Plus_Jakarta_Sans']">
+    <div className="min-h-screen bg-white/20 backdrop-blur-sm flex flex-col items-center justify-center p-6 font-['Plus_Jakarta_Sans']">
       <div className="bg-white/80 backdrop-blur-md p-10 rounded-[3rem] shadow-2xl border-b-8 border-gray-200 text-center max-w-md w-full">
-        <div className="w-24 h-24 mx-auto bg-[#ffca28] rounded-full flex items-center justify-center shadow-inner mb-6 border-4 border-white">
-          <span className="material-symbols-outlined text-5xl text-white">public</span>
+        <div className="w-28 h-28 mx-auto bg-white rounded-full flex items-center justify-center shadow-xl mb-6 border-4 border-[#ffca28] overflow-hidden">
+          <img src={imgFondo} alt="Logo Inga" className="w-full h-full object-cover" />
         </div>
-        <h1 className="text-4xl font-black text-[#e65100] mb-2 uppercase tracking-tight">Mundo Inga</h1>
-        <p className="text-[#8d6e63] font-bold mb-10">Sabiduría Ancestral Digital</p>
+        <div className="mb-6">
+          <h1 className="text-5xl font-black text-[#e65100] uppercase tracking-tighter leading-none mb-1">Mi mundo Inga</h1>
+          <p className="text-xl font-bold text-[#8d6e63] italic opacity-80">Nuka Inga kaugsai</p>
+        </div>
+        <div className="h-1 w-24 bg-[#ffca28] mx-auto rounded-full mb-8"></div>
 
         <div className="space-y-4">
           <button 

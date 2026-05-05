@@ -18,7 +18,13 @@
 
 @layer base {
   body {
-    @apply bg-surface font-lexend text-on-surface;
+    @apply font-lexend text-on-surface;
+    background-image: url('./img/fondopagina.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
   }
 }
 
