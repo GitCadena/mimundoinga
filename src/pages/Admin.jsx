@@ -86,12 +86,6 @@ const Admin = () => {
         >
           Guía Pedagógica
         </button>
-        <button 
-          className={`tab-btn ${activeTab === 'guardianes' ? 'active' : ''}`}
-          onClick={() => setActiveTab('guardianes')}
-        >
-          Guía: Guardianes del Territorio
-        </button>
       </div>
 
       <div className="admin-content">
@@ -176,65 +170,81 @@ const Admin = () => {
         {activeTab === 'guide' && (
           <div className="pedagogical-guide">
             <div className="card-organic guide-card">
-              <h2>Repositorio de Guía Pedagógica</h2>
-              <p className="guide-intro">Esta guía estructura el aprendizaje en 4 momentos clave basados en la cosmovisión Inga, orientados a la <strong>Identificación, Interpretación y Actitud</strong> del estudiante hacia su cultura.</p>
+              <h2 className="text-3xl font-black text-[#5d4037] mb-6">GUÍA PEDAGÓGICA: “EL TEJIDO DE LA MEMORIA”</h2>
               
-              <div className="guide-moments">
-                <div className="moment-block">
-                  <h3><BookOpen size={20}/> 1. El Despertar del Saber</h3>
-                  <p><strong>Objetivo (Identificación):</strong> Introducir al estudiante al mundo de la simbología Inga, reconociendo visualmente los elementos en su entorno.</p>
-                  <p><em>Sugerencia docente:</em> Mostrar objetos reales (chumbes, canastos) y preguntar si conocen los nombres en Inga.</p>
+              <section className="guide-section mb-8">
+                <h3 className="text-xl font-bold text-[#ef6c00] mb-3 flex items-center gap-2">
+                  <BookOpen size={24}/> Propósito Pedagógico y Sentido de la Estrategia
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Esta propuesta busca que el docente no solo enseñe contenidos culturales, sino que convierta la plataforma web en un espacio de mediación entre la tecnología y la tradición ancestral, donde el estudiante de primaria descubra que el arte Inga no es únicamente una expresión estética, sino también una forma de escritura y comunicación de saberes. El objetivo principal es fortalecer la identidad cultural de los niños mediante el reconocimiento de los símbolos propios de su pueblo, promoviendo el respeto por el conocimiento de los mayores y la preservación de la narrativa visual indígena.
+                </p>
+              </section>
+
+              <div className="guide-moments grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="moment-block p-6 bg-[#fff8e1] rounded-2xl border-l-4 border-[#ff9800]">
+                  <h4 className="font-black text-lg text-[#5d4037] mb-2">Momento de Apertura: El Despertar del Saber</h4>
+                  <p className="text-sm text-gray-600">
+                    La jornada inicia con un <strong>Círculo de la Palabra</strong>, recreando un espacio de confianza y armonía. El docente invitará a los niños a observar imágenes reales de tejidos Inga (chumbes) en la plataforma y preguntará: <em>“¿Qué historias creen que están guardadas en estas figuras que usan nuestros abuelos?”</em>. El fin es despertar la curiosidad y comprender que cada símbolo guarda un mensaje profundo.
+                  </p>
                 </div>
-                <div className="moment-block">
-                  <h3><BookOpen size={20}/> 2. La Siembra</h3>
-                  <p><strong>Objetivo (Interpretación):</strong> Profundizar en los significados. Explicar que cada símbolo no es solo un dibujo, sino una historia viva de la comunidad.</p>
-                  <p><em>Sugerencia docente:</em> Usar el "Diccionario de Significados" para contar historias de los abuelos sobre el Sol (Indi) o la Madre Tierra (Chagra).</p>
+
+                <div className="moment-block p-6 bg-[#e8f5e9] rounded-2xl border-l-4 border-[#4caf50]">
+                  <h4 className="font-black text-lg text-[#5d4037] mb-2">Momento de Desarrollo: La Siembra del Conocimiento</h4>
+                  <p className="text-sm text-gray-600">
+                    El docente guiará a los estudiantes hacia la sección de <strong>“Explicación de Símbolos”</strong>. Mientras la plataforma muestra contenidos, el maestro profundizará en el significado de símbolos como el Churo, la Rana, las Montañas y el Sol, explicando su conexión con la vida y el pensamiento indígena. Los niños pueden dibujar los símbolos en el aire o cuadernos para fortalecer la memoria visual.
+                  </p>
                 </div>
-                <div className="moment-block">
-                  <h3><BookOpen size={20}/> 3. La Cosecha (Juego)</h3>
-                  <p><strong>Objetivo (Actitud e Interpretación):</strong> Poner en práctica lo aprendido mediante la interactividad. El módulo "Caminando por los Símbolos" evalúa formativamente.</p>
-                  <p><em>Sugerencia docente:</em> Acompañar al estudiante mientras juega, reforzando positivamente cuando logre "Insignias de Sabiduría".</p>
+
+                <div className="moment-block p-6 bg-[#e3f2fd] rounded-2xl border-l-4 border-[#2196f3]">
+                  <h4 className="font-black text-lg text-[#5d4037] mb-2">Momento de Práctica: La Cosecha y el Juego</h4>
+                  <p className="text-sm text-gray-600">
+                    Interacción directa con el juego digital de asociación. El docente actúa como mediador mientras los estudiantes exploran de manera autónoma el reto de relacionar cada símbolo con su significado. Se busca reforzar la memoria cognitiva y visual, comprendiendo que se está interpretando el pensamiento de los mayores.
+                  </p>
                 </div>
-                <div className="moment-block">
-                  <h3><BookOpen size={20}/> 4. El Retorno</h3>
-                  <p><strong>Objetivo (Actitud):</strong> Reflexión final sobre cómo la simbología vive en nosotros hoy.</p>
-                  <p><em>Sugerencia docente:</em> Hacer que el estudiante dibuje su propio símbolo inspirado en lo que aprendió sobre su identidad.</p>
+
+                <div className="moment-block p-6 bg-[#f3e5f5] rounded-2xl border-l-4 border-[#9c27b0]">
+                  <h4 className="font-black text-lg text-[#5d4037] mb-2">Momento de Cierre: El Retorno a la Comunidad</h4>
+                  <p className="text-sm text-gray-600">
+                    Socialización colectiva donde cada estudiante comparte qué símbolo le llamó más la atención. Se reflexiona sobre la importancia de mantener vivos estos saberes. Se cierra con la pregunta: <em>“¿Cómo podemos nosotros ayudar a que estos símbolos no se olviden?”</em> y se sugiere conversar con un familiar mayor en casa.
+                  </p>
                 </div>
               </div>
+
+              <section className="guide-section mb-8 p-6 bg-white border-2 border-dashed border-[#ff9800] rounded-3xl">
+                <h3 className="text-xl font-bold text-[#5d4037] mb-4 flex items-center gap-2">
+                  <span className="material-symbols-outlined">auto_awesome</span> Explicación de los Símbolos Ancestrales
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                  <div className="p-3 bg-gray-50 rounded-xl">
+                    <strong className="text-[#ef6c00]">El Churo (Espirale):</strong> Representa el origen y el retorno, mostrando que el tiempo avanza en ciclos donde siempre regresamos a nuestras raíces.
+                  </div>
+                  <div className="p-3 bg-gray-50 rounded-xl">
+                    <strong className="text-[#ef6c00]">La Rana (Ambe):</strong> Simboliza la fertilidad, el agua y la conexión con la Madre Tierra, protectora de la vida en la selva.
+                  </div>
+                  <div className="p-3 bg-gray-50 rounded-xl">
+                    <strong className="text-[#ef6c00]">Las Montañas (Urqucunapa):</strong> Representan el territorio sagrado, la protección y la fortaleza del pueblo Inga.
+                  </div>
+                  <div className="p-3 bg-gray-50 rounded-xl">
+                    <strong className="text-[#ef6c00]">El Sol (Inti):</strong> Simboliza la energía vital, la claridad del pensamiento y la luz que guía el camino.
+                  </div>
+                </div>
+              </section>
+
+              <section className="guide-section bg-[#fafafa] p-6 rounded-3xl border border-gray-200">
+                <h3 className="text-xl font-bold text-[#2e7d32] mb-3 flex items-center gap-2">
+                  <span className="material-symbols-outlined">assignment_turned_in</span> Evaluación del Impacto Pedagógico
+                </h3>
+                <ul className="list-disc list-inside space-y-2 text-gray-700 text-sm">
+                  <li><strong>Reconocimiento:</strong> Observar si el estudiante logra nombrar al menos tres símbolos en el entorno digital y cotidiano.</li>
+                  <li><strong>Interpretación:</strong> Valorar la capacidad del niño para explicar con sus propias palabras el significado de un símbolo.</li>
+                  <li><strong>Actitud:</strong> Tener en cuenta la valoración y respeto hacia los saberes ancestrales y el interés por su identidad cultural.</li>
+                </ul>
+              </section>
             </div>
           </div>
         )}
 
-        {activeTab === 'guardianes' && (
-          <div className="pedagogical-guide">
-            <div className="card-organic guide-card">
-              <h2>Guía: Guardianes del Territorio</h2>
-              <p className="guide-intro">Esta guía está diseñada para acompañar el módulo "Cuida el Territorio", enseñando la importancia de la relación recíproca con la Casa Grande.</p>
-              
-              <div className="guide-moments">
-                <div className="moment-block">
-                  <h3><BookOpen size={20}/> 1. Apertura (Caminata)</h3>
-                  <p><strong>Objetivo:</strong> Sensibilizar al estudiante sobre el estado de nuestro entorno.</p>
-                  <p><em>Sugerencia docente:</em> Realizar un recorrido por la comunidad, observando qué elementos pertenecen a la naturaleza y cuáles son residuos.</p>
-                </div>
-                <div className="moment-block">
-                  <h3><BookOpen size={20}/> 2. Desarrollo (Restauración Digital)</h3>
-                  <p><strong>Objetivo:</strong> Interactuar con el módulo para entender cómo las pequeñas acciones sanan el territorio.</p>
-                  <p><em>Sugerencia docente:</em> Acompañar al niño mientras limpia los escenarios virtuales, leyendo juntos los mensajes en Inga y Español.</p>
-                </div>
-                <div className="moment-block">
-                  <h3><BookOpen size={20}/> 3. Cierre (Reflexión)</h3>
-                  <p><strong>Objetivo:</strong> Evaluar y conectar el juego con la realidad.</p>
-                  <p><em>Sugerencia docente:</em> Usar el reporte del juego (Tiempo y Errores) para dialogar: ¿Por qué a veces nos equivocamos al identificar la basura? ¿Cómo podemos ser más rápidos en ayudar?</p>
-                </div>
-                <div className="moment-block">
-                  <h3><BookOpen size={20}/> 4. Campaña Ambiental</h3>
-                  <p><strong>Objetivo:</strong> Llevar lo aprendido a la acción física.</p>
-                  <p><em>Sugerencia docente:</em> Organizar una jornada de limpieza en la escuela (Chagra) o un río cercano, aplicando el conocimiento adquirido.</p>
-                </div>
-              </div>
-            </div>
-          </div>
         )}
       </div>
     </div>
