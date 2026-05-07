@@ -8,6 +8,9 @@ import imgMenta from '../img/menta.png';
 import imgAloe from '../img/aloe.png';
 import imgCorteza from '../img/corteza.png';
 import imgFlor from '../img/flor.png';
+import imgDienteDeLeon from '../img/dientedeleon.png';
+import imgToronjil from '../img/toronjil.png';
+import imgCalendula from '../img/calendula.png';
 
 // Import scenario images (problem and solution)
 import imgDolorEstomago from '../img/dolorestomago.png';
@@ -31,17 +34,63 @@ const MedicineModule = () => {
   const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   const baseMedicines = [
-    { id: 'm1', name: 'Menta Curativa', image: imgMenta, color: 'bg-[#ffeb3b]', border: 'border-[#fbc02d]', text: 'text-[#f57f17]' },
-    { id: 'm2', name: 'Aloe Refrescante', image: imgAloe, color: 'bg-[#64dd17]', border: 'border-[#33691e]', text: 'text-[#1b5e20]' },
-    { id: 'm3', name: 'Corteza Sagrada', image: imgCorteza, color: 'bg-[#ff9800]', border: 'border-[#e65100]', text: 'text-[#bf360c]' },
-    { id: 'm4', name: 'Flores de Manzanilla', image: imgFlor, color: 'bg-[#29b6f6]', border: 'border-[#0288d1]', text: 'text-[#01579b]' }
+    { id: 'm1', name: 'Diente de León', image: imgDienteDeLeon, color: 'bg-[#fff9c4]', border: 'border-[#fbc02d]', text: 'text-[#f57f17]', description: 'Limpia nuestra sangre y nos da fuerza para caminar por el territorio.' },
+    { id: 'm2', name: 'Manzanilla', image: imgFlor, color: 'bg-[#e1f5fe]', border: 'border-[#0288d1]', text: 'text-[#01579b]', description: 'Calma los dolores, desinflama el cuerpo y nos ayuda a descansar mejor.' },
+    { id: 'm3', name: 'Hierbabuena', image: imgMenta, color: 'bg-[#f1f8e9]', border: 'border-[#388e3c]', text: 'text-[#1b5e20]', description: 'Es la mejor amiga del estómago (Uigsa). Quita el dolor y la pesadez.' },
+    { id: 'm4', name: 'Sábila', image: imgAloe, color: 'bg-[#e8f5e9]', border: 'border-[#43a047]', text: 'text-[#1b5e20]', description: 'Refresca nuestra piel y ayuda a sanar las quemaduras del sol.' },
+    { id: 'm5', name: 'Caléndula', image: imgCalendula, color: 'bg-[#fff3e0]', border: 'border-[#fb8c00]', text: 'text-[#e65100]', description: 'Limpia y cierra las heridas para que nuestra piel sane rápido.' },
+    { id: 'm6', name: 'Toronjil', image: imgToronjil, color: 'bg-[#f3e5f5]', border: 'border-[#8e24aa]', text: 'text-[#4a148c]', description: 'Tranquiliza el corazón y nos ayuda a estar alegres y en armonía.' }
   ];
 
   const scenarios = [
-    { problem: '¡Me duele la barriguita!', solution: 'm1', successMsg: '¡Muy bien! La menta alivia el dolor de barriga.', imgProblem: imgDolorEstomago, imgSuccess: imgEstomagoCurado },
-    { problem: '¡Me quemé con el sol!', solution: 'm2', successMsg: '¡Excelente! El aloe refresca y sana la piel.', imgProblem: imgQuemaduraSol, imgSuccess: imgPielCuradaSol },
-    { problem: '¡Me raspe la rodilla!', solution: 'm3', successMsg: '¡Perfecto! La corteza sagrada ayuda a curar las heridas.', imgProblem: imgRodillaLastimada, imgSuccess: imgRodillaCurada },
-    { problem: '¡Me picó un bichito!', solution: 'm4', successMsg: '¡Genial! La manzanilla desinflama y calma la picazón.', imgProblem: imgPicaduraBicho, imgSuccess: imgInflamacionManzanilla }
+    { 
+      id: 'purificacion',
+      problem: 'Siento mi cuerpo pesado, necesito una limpieza interna.', 
+      solution: 'm1', 
+      successMsg: '¡Excelente! El Diente de León limpió tu sangre y te devolvió la fuerza.', 
+      imgProblem: imgDolorEstomago, 
+      imgSuccess: imgEstomagoCurado 
+    },
+    { 
+      id: 'digestion',
+      problem: '¡Ay! Comí mucho y mi estómago (Uigsa) me duele.', 
+      solution: 'm3', 
+      successMsg: '¡Muy bien! La Hierbabuena es la mejor amiga del Uigsa.', 
+      imgProblem: imgDolorEstomago, 
+      imgSuccess: imgEstomagoCurado 
+    },
+    { 
+      id: 'descanso',
+      problem: 'Tengo un dolor que no me deja tranquilo ni dormir.', 
+      solution: 'm2', 
+      successMsg: '¡Perfecto! La Manzanilla te ayudará a descansar profundamente.', 
+      imgProblem: imgPicaduraBicho, 
+      imgSuccess: imgInflamacionManzanilla 
+    },
+    { 
+      id: 'heridas',
+      problem: 'Me caí jugando y tengo una herida que me arde.', 
+      solution: 'm5', 
+      successMsg: '¡Genial! La Caléndula cerrará tu herida rápidamente.', 
+      imgProblem: imgRodillaLastimada, 
+      imgSuccess: imgRodillaCurada 
+    },
+    { 
+      id: 'emocional',
+      problem: 'Tuve un susto y mi corazón late muy rápido.', 
+      solution: 'm6', 
+      successMsg: '¡Qué bien! El Toronjil trajo armonía a tu corazón.', 
+      imgProblem: imgPicaduraBicho, 
+      imgSuccess: imgInflamacionManzanilla 
+    },
+    { 
+      id: 'piel',
+      problem: 'Estuve mucho al sol y mi piel siente mucho calor.', 
+      solution: 'm4', 
+      successMsg: '¡Muy bien! La Sábila refrescó y sanó tu piel.', 
+      imgProblem: imgQuemaduraSol, 
+      imgSuccess: imgPielCuradaSol 
+    }
   ];
 
   // Shuffle medicines on load and when scenario changes
@@ -52,14 +101,17 @@ const MedicineModule = () => {
 
   const speakText = (text) => {
     if ('speechSynthesis' in window) {
+      speechSynthesis.cancel(); // Cancel current speech to avoid overlap
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'es-ES';
+      utterance.rate = 0.9;
       speechSynthesis.speak(utterance);
     }
   };
 
   const handleDragStart = (e, med) => {
     e.dataTransfer.setData('medId', med.id);
+    speakText(med.description);
   };
 
   const handleDrop = (e) => {
@@ -78,14 +130,15 @@ const MedicineModule = () => {
           setSuccess(false);
         } else {
           localStorage.setItem('inga_progress_medicina', 'completed');
-          speakText('¡Has completado todas las curaciones!');
+          speakText('¡Has completado todas las curaciones, Guardián de la Chagra!');
         }
-      }, 3500);
+      }, 4000);
 
     } else {
       setSuccess(false);
-      setErrorText('Esa planta sirve para otra cosa. Intenta con otra.');
-      speakText('Esa planta sirve para otra cosa. Intenta con otra.');
+      const wrongMed = baseMedicines.find(m => m.id === medId);
+      setErrorText(`${wrongMed.name} sirve para otra cosa. Intenta con otra.`);
+      speakText(`${wrongMed.name} sirve para otra cosa. Intenta con otra.`);
     }
   };
 
@@ -126,10 +179,12 @@ const MedicineModule = () => {
           title="Botica Ancestral Inga"
           description="Nuestras plantas son regalo de la Madre Tierra para sanar el cuerpo y el espíritu."
           items={[
-            { name: "Menta", meaning: "Calma los dolores de barriga y ayuda a una buena digestión.", icon: "eco" },
-            { name: "Aloe (Sábila)", meaning: "Refresca la piel cuando el sol nos quema y ayuda a sanar heridas.", icon: "spa" },
-            { name: "Corteza Sagrada", meaning: "Se usa para limpiar y proteger las raspaduras de los niños exploradores.", icon: "sanitizer" },
-            { name: "Manzanilla", meaning: "Desinflama las picaduras y ayuda a descansar mejor.", icon: "psychology" }
+            { name: "Diente de León", meaning: "Limpia nuestra sangre y nos da fuerza para caminar.", icon: "eco" },
+            { name: "Manzanilla", meaning: "Calma los dolores, desinflama y ayuda a descansar.", icon: "spa" },
+            { name: "Hierbabuena", meaning: "Amiga del estómago (Uigsa). Quita el dolor y pesadez.", icon: "local_pharmacy" },
+            { name: "Sábila", meaning: "Refresca la piel y sana quemaduras del sol.", icon: "water_drop" },
+            { name: "Caléndula", meaning: "Limpia y cierra las heridas rápidamente.", icon: "sanitizer" },
+            { name: "Toronjil", meaning: "Tranquiliza el corazón y nos da armonía.", icon: "favorite" }
           ]}
         />
         {/* Left Side: Avatar & Problem */}
@@ -172,12 +227,14 @@ const MedicineModule = () => {
                 key={med.id}
                 draggable={!isFullyComplete}
                 onDragStart={(e) => handleDragStart(e, med)}
+                onMouseEnter={() => !isFullyComplete && speakText(med.description)}
+                onClick={() => !isFullyComplete && speakText(med.description)}
                 className={`rounded-[2rem] p-4 shadow-xl border-b-8 transition-transform ${isFullyComplete ? 'opacity-50 grayscale' : 'cursor-pointer hover:-translate-y-2'} ${med.color} ${med.border}`}
               >
                 <div className="bg-white aspect-square rounded-xl overflow-hidden mb-3 border-4 border-white relative">
                   <img src={med.image} alt={med.name} className="w-full h-full object-cover" draggable="false" />
                   <button 
-                    onClick={(e) => { e.stopPropagation(); speakText(med.name); }}
+                    onClick={(e) => { e.stopPropagation(); speakText(med.description); }}
                     className="absolute bottom-1 right-1 w-8 h-8 bg-white/90 text-[#5d4037] rounded-full flex items-center justify-center shadow-md backdrop-blur-sm"
                   >
                     <span className="material-symbols-outlined text-sm">volume_up</span>
